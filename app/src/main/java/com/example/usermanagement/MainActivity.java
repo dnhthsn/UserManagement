@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnAddress.setAdapter(adapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recUser.setLayoutManager(layoutManager);
         recyclerViewAdapter = new RecyclerViewAdapter(this, usersList);
         recUser.setAdapter(recyclerViewAdapter);
