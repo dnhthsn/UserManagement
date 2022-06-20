@@ -22,13 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private String[] addresses = {"Ha Noi", "Bac Ninh", "Ha Nam", "Nghe An", "Thanh Hoa", "Hung Yen"};
+
     private RecyclerView recUser;
+    private RecyclerViewAdapter recyclerViewAdapter;
+
     private EditText edtName, edtPhone;
     private Spinner spnAddress;
-    private RecyclerViewAdapter recyclerViewAdapter;
-    public List<Users> usersList;
     private Button btnAdd;
-    private String[] addresses = {"Ha Noi", "Bac Ninh", "Ha Nam", "Nghe An", "Thanh Hoa", "Hung Yen"};
+
+    public List<Users> usersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 String phone = edtPhone.getText().toString();
                 String address = spnAddress.getSelectedItem().toString();
                 if (TextUtils.isEmpty(name) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(address)){
-                    Dialog dialog = new Dialog(MainActivity.this);
-                    dialog.setContentView(R.layout.dialog);
-
-                    Button btnOk = dialog.findViewById(R.id.btn_ok);
-                    btnOk.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dialog.dismiss();
-                        }
-                    });
-                    dialog.show();
+                    ShowDialog();
                 } else {
                     Users users = new Users(name, phone, address);
                     recyclerViewAdapter.addUser(users);
@@ -77,8 +70,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    public void ShowDialog(){
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.dialog);
 
-
+        Button btnOk = dialog.findViewById(R.id.btn_ok);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

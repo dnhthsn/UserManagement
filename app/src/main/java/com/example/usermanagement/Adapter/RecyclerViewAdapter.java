@@ -19,8 +19,8 @@ import com.example.usermanagement.R;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ItemUserHolder> {
-    Context context;
-    List<Users> usersList;
+    private Context context;
+    private List<Users> usersList;
 
     public RecyclerViewAdapter(Context context, List<Users> usersList) {
         this.context = context;
